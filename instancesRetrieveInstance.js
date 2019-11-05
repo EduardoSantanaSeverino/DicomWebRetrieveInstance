@@ -31,7 +31,7 @@ authorize(function(authClient) {
     var request = {
         // The name of the DICOM store that is being accessed (e.g.,
         // `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`).
-        parent: 'projects/my-project/locations/my-location/datasets/my-dataset/dicomStores/my-dicom-store',  // TODO: Update placeholder value.
+        parent: parent,  // TODO: Update placeholder value.
 
         // The path of the RetrieveInstanceMetadata DICOMweb request (e.g.,
         // `studies/{study_id}/series/{series_id}/instances/{instance_id}/metadata`).
