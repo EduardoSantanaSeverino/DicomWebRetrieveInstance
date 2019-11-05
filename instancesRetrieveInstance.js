@@ -26,17 +26,15 @@ authorize(function(authClient) {
     const seriesUid = '1.2.392.200046.100.14.6811982656493498126896032175776047593220';
     const instanceUid = '1.2.392.200046.100.14.420525397820872382890175890573871259983';
     const parent = `projects/${projectId}/locations/${cloudRegion}/datasets/${datasetId}/dicomStores/${dicomStoreId}`;
-    const dicomWebPath = `studies/${studyUid}/series/${seriesUid}/instances/${instanceUid}`;
-
+    const dicomWebPath = `studies/${studyUid}/series/${seriesUid}/instances/${instanceUid}/metadata`;
 
     var request = {
-
         // The name of the DICOM store that is being accessed (e.g.,
         // `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`).
-        parent: parent,  // TODO: Update placeholder value.
+        parent: 'projects/my-project/locations/my-location/datasets/my-dataset/dicomStores/my-dicom-store',  // TODO: Update placeholder value.
 
-        // The path of the RetrieveInstance DICOMweb request (e.g.,
-        // `studies/{study_id}/series/{series_id}/instances/{instance_id}`).
+        // The path of the RetrieveInstanceMetadata DICOMweb request (e.g.,
+        // `studies/{study_id}/series/{series_id}/instances/{instance_id}/metadata`).
         dicomWebPath: dicomWebPath,  // TODO: Update placeholder value.
 
         auth: authClient,
@@ -45,36 +43,15 @@ authorize(function(authClient) {
     console.log(parent);
     console.log(dicomWebPath);
 
-    //projects/centennial-dev/locations/northamerica-northeast1/datasets/AxonDataset7/dicomStores/DataStore7
-    // studies/1.2.392.200046.100.14.233464500781184654070685667316508464174/series/1.2.392.200046.100.14.6811982656493498126896032175776047593220/instances/1.2.392.200046.100.14.420525397820872382890175890573871259983
-    // retrieveMetadata
-    cloudHealthcare.projects.locations.datasets.dicomStores.studies.series.instances.retrieveInstance(request, function(err, response) {
-        console.log("retrieveInstance");
-        if (err) {
-            console.error(err);
-            return;
-        }
-        console.log(parent);
-        console.log(dicomWebPath);
-
-        // TODO: Change code below to process the `response` object:
-        console.log(JSON.stringify(response));
-    });
-
     cloudHealthcare.projects.locations.datasets.dicomStores.studies.series.instances.retrieveMetadata(request, function(err, response) {
-        console.log("retrieveMetadata");
         if (err) {
             console.error(err);
             return;
         }
 
-        console.log(parent);
-        console.log(dicomWebPath);
-
         // TODO: Change code below to process the `response` object:
-        console.log(JSON.stringify(response));
+        console.log(JSON.stringify(response, null, 2));
     });
-
 });
 
 function authorize(callback) {
