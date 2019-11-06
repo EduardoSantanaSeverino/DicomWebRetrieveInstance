@@ -40,23 +40,23 @@ const main = () => {
         const seriesUid = '1.2.392.200046.100.14.6811982656493498126896032175776047593220';
         const instanceUid = '1.2.392.200046.100.14.420525397820872382890175890573871259983';
         const parent = `projects/${projectId}/locations/${cloudRegion}/datasets/${datasetId}/dicomStores/${dicomStoreId}`;
-        const dicomWebPath = `studies/${studyUid}/series/${seriesUid}/instances/${instanceUid}`;
+        const dicomWebPath = `studies/${studyUid}/series/${seriesUid}/instances/${instanceUid}/metadata`;
         const request = {parent, dicomWebPath};
 
         //const instanceInstance = await healthcare.projects.locations.datasets.dicomStores.studies.series.instances.retrieveInstance(request);
         const instanceMetadata = await healthcare.projects.locations.datasets.dicomStores.studies.series.instances.retrieveMetadata(request);
-
         // console.log("instanceInstance");
         // console.log(JSON.stringify(instanceInstance));
         console.log("instanceMetadata");
-        console.log(JSON.stringify(instanceMetadata));
+        //console.log(JSON.stringify(instanceMetadata));
 
         //const fileBytes = Buffer.from(instance.data);
 
         // console.log("instanceInstance");
         // console.log(Buffer.from(instanceInstance.data).toString());
         console.log("instanceMetadata Buffer");
-        console.log(Buffer.from(instanceMetadata.data));
+        console.log(JSON.stringify(instanceMetadata.data, null, 2));
+        //console.log(Buffer.from(instanceMetadata.data));
 
         console.log(
             `Retrieved DICOM instance and saved to ${fileName} in current directory`
