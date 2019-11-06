@@ -1,6 +1,5 @@
  const {google} = require('googleapis');
  var cloudHealthcare = google.healthcare('v1beta1');
- var cloudHealthcare1 = google.healthcare('v1beta1');
 
  const cloudRegion = 'northamerica-northeast1';
  const projectId = 'centennial-dev';
